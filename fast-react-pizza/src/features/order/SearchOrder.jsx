@@ -10,6 +10,6 @@ export default function SearchOrder() {
     }
     const [query,setQuery] = useState("")
   return <form action="" onSubmit={handleSubmit}>
-      <input type="text" placeholder="search order number" value={query} onChange={e=>setQuery(e.target.value)} />
+      <input className="rounded-lg p-2 text-center" type="text" placeholder="search order number" value={query} onChange={e=>setQuery(e.target.value)} />
     </form>
 }

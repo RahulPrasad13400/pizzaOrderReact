@@ -40,10 +40,10 @@ function CreateOrder() {
   const cart = fakeCart;
 
   return (
-    <div>
+    <div className="max-w-3xl mx-auto text-center flex flex-col gap-4">
       <h2>Ready to order? Let's go!</h2>
 
-      <Form method="POST">
+      <Form method="POST" className="flex flex-col gap-4">
         <div>
           <label>First Name</label>
           <input type="text" name="customer" required />
@@ -51,17 +51,12 @@ function CreateOrder() {
 
         <div>
           <label>Phone number</label>
-          <div>
             <input type="tel" name="phone" required />
-          </div>
           {formErrors?.phone  && <p>{formErrors.phone}</p>}
         </div>
-
         <div>
           <label>Address</label>
-          <div>
             <input type="text" name="address" required />
-          </div>
         </div>
 
         <div>
