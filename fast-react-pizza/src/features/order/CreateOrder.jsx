@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Form, redirect, useActionData, useNavigation } from "react-router-dom";
 import { createOrder } from "../../service/apiRestaurant";
+import Button from "../../ui/Button";
 
 // https://uibakery.io/regex-library/phone-number
 const isValidPhone = (str) =>
@@ -40,23 +41,23 @@ function CreateOrder() {
   const cart = fakeCart;
 
   return (
-    <div className="max-w-3xl mx-auto text-center flex flex-col gap-4">
+    <div className="max-w-3xl mx-auto text-center flex flex-col gap-4 mt-10">
       <h2>Ready to order? Let's go!</h2>
 
       <Form method="POST" className="flex flex-col gap-4">
         <div>
           <label>First Name</label>
-          <input type="text" name="customer" required />
+          <input className="input" type="text" name="customer" required />
         </div>
 
         <div>
           <label>Phone number</label>
-            <input type="tel" name="phone" required />
+            <input className="input" type="tel" name="phone" required />
           {formErrors?.phone  && <p>{formErrors.phone}</p>}
         </div>
         <div>
           <label>Address</label>
-            <input type="text" name="address" required />
+            <input className="input" type="text" name="address" required />
         </div>
 
         <div>
@@ -71,8 +72,8 @@ function CreateOrder() {
         </div>
 
         <div>
-          <input type="hidden" name="cart" value={JSON.stringify(cart)} />
-          <button disabled={isSubmitting}>{isSubmitting ? 'placing order..' : 'order now'}</button>
+          <input className="input" type="hidden" name="cart" value={JSON.stringify(cart)} />
+          <Button disabled={isSubmitting}>{isSubmitting ? 'place order...' : 'order now'}</Button>
         </div>
       </Form>
     </div>
