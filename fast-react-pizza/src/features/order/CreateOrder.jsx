@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Form, redirect, useActionData, useNavigation } from "react-router-dom";
 import { createOrder } from "../../service/apiRestaurant";
 import Button from "../../ui/Button";
+import { useSelector } from "react-redux";
 
 // https://uibakery.io/regex-library/phone-number
 const isValidPhone = (str) =>
@@ -40,28 +41,30 @@ function CreateOrder() {
   // const [withPriority, setWithPriority] = useState(false);
   const cart = fakeCart;
 
+  const username = useSelector(state=>state.user.username)
   return (
     <div className="max-w-3xl mx-auto text-center flex flex-col gap-4 mt-10">
-      <h2>Ready to order? Let's go!</h2>
+      <h2 className="text-xl font-semibold mb-8">Ready to order? Let's go!</h2>
 
       <Form method="POST" className="flex flex-col gap-4">
-        <div>
-          <label>First Name</label>
-          <input className="input" type="text" name="customer" required />
+        <div className="flex items-center justify-center gap-10"> 
+          <label className="font-semibold">First Name</label>
+          <input className="input" type="text" name="customer" defaultValue={username} required />
         </div>
 
-        <div>
-          <label>Phone number</label>
+        <div className="flex items-center justify-center gap-10">
+          <label className="font-semibold">Phone number</label>
             <input className="input" type="tel" name="phone" required />
           {formErrors?.phone  && <p>{formErrors.phone}</p>}
         </div>
-        <div>
-          <label>Address</label>
+        <div className="flex items-center justify-center gap-10">
+          <label className="font-semibold">Address</label>
             <input className="input" type="text" name="address" required />
         </div>
 
-        <div>
-          <input
+        <div className="flex items-center justify-center gap-2">
+          <input 
+            className="w-6 h-6"
             type="checkbox"
             name="priority"
             id="priority"
@@ -71,9 +74,9 @@ function CreateOrder() {
           <label htmlFor="priority">Want to yo give your order priority?</label>
         </div>
 
-        <div>
+        <div className="flex items-center justify-center gap-10">
           <input className="input" type="hidden" name="cart" value={JSON.stringify(cart)} />
-          <Button disabled={isSubmitting}>{isSubmitting ? 'place order...' : 'order now'}</Button>
+          <Button type='primary' disabled={isSubmitting}>{isSubmitting ? 'place order...' : 'order now'}</Button>
         </div>
       </Form>
     </div>
