@@ -4,7 +4,7 @@ import MenuItem from './MenuItem';
 
 function Menu() {
   const menu = useLoaderData()
-  return <ul className='my-4 h-[78vh] overflow-scroll overflow-x-hidden space-y-4'>{menu.map(pizza=><MenuItem key={pizza.id} pizza={pizza}/>)}</ul>;
+  return <ul className='my-4 h-[78vh] overflow-scroll overflow-x-hidden space-y-4 px-2 md:px-0'>{menu.map(pizza=><MenuItem key={pizza.id} pizza={pizza}/>)}</ul>;
 }
 
 export async function loader(){
